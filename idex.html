@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text to speck</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+    h1{
+        font-size: 48px;
+        font-weight: 800;
+        -webkit-text-stroke: 2px #000000;
+        color: #ffffff;
+    }
+    .container {
+        height: 100vh;
+        width: 100vw;
+        background: #f4f4f4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+    textarea{
+        height: 40vh;
+        min-width: 300px;
+        width: 30vw;
+        padding: 20px;
+    }
+    button{
+        height: 35px;
+        width: 200px;
+        font-size: 20px;
+        cursor: pointer;
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        border: 2px solid rgb(0, 0, 0);
+        border-radius: 10px;
+        transition: all ease 0.5s;
+    }
+    button:hover{
+        transform: scale(.8);
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>Text to speck</h1>
+        <textarea type="text" id="userInput" ></textarea>
+        <button class="btn" onclick="toSpeck(userInput)">Speck now</button>
+    </div>
+    <script>
+        function toSpeck(arg) {
+            let voice = new SpeechSynthesisUtterance(arg.value);
+            console.log(voice);
+            window.speechSynthesis.speak(voice);
+            console.log(window.speechSynthesis)
+            arg.value = "";
+            arg.focus();
+        };
+    </script>
+</body>
+
+</html>
